@@ -22,12 +22,16 @@ export function AuthProvider({ children }: AuthProviderProps) {
   const isAuthenticated = false;
 
   async function signIn({ email, password }: SignInCredentials) {
-    const response = await api.post('sessions', {
-      email,
-      password
-    })
-
-    console.log(response.data)
+    try {
+      const response = await api.post('sessions', {
+        email,
+        password
+      })
+  
+      console.log(response.data)
+    } catch (error) {
+      console.log(error)
+    }
   }
 
   return (
